@@ -1,0 +1,9 @@
+eac3to v3.27
+command line: C:\Users\sewil\Desktop\mkvtomp4\Tools\eac3to\eac3to  "C:\Users\sewil\Desktop\mkvtomp4\tmp\audio.AAC" "C:\Users\sewil\Desktop\mkvtomp4\tmp\audio_delayed.AAC" -43ms -progressnumbers
+------------------------------------------------------------------------------
+AAC, 2.0 channels, 48kHz
+Applying AAC delay...
+A remaining delay of -1ms could not be fixed.
+Creating file "C:\Users\sewil\Desktop\mkvtomp4\tmp\audio_delayed.AAC"...
+eac3to processing took 1 second.
+Done.
