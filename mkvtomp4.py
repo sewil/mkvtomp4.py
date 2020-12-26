@@ -99,4 +99,4 @@ if audio_format == 'AC-3':
 
 mp4box(video_path, audio_out_path, framerate, out_path)
 
-shutil.rmtree(os.path.join('tmp'))
+shutil.rmtree(os.path.join(pwd, 'tmp'))
