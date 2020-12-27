@@ -103,7 +103,7 @@ video_delay = int(float(audio_track['Video_Delay'])*1000)
 video_delay_s = ('+' + str(video_delay) if video_delay > 0 else str(video_delay)) + 'ms'
 print(video_delay_s)
 
-audio_out_path = os.path.join(pwd, "tmp", "audio" + ('.m4a' if audio_format == 'AC-3' else '.aac'))
+audio_out_path = os.path.join(pwd, "tmp", "audio" + ('.m4a' if audio_format == 'AC-3' else '_delayed.aac'))
 print(audio_out_path)
 
 # Run
