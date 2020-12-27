@@ -49,6 +49,12 @@ def mp4box(video_path, audio_out_path, framerate, out_path):
   subprocess.call(mp4box_command)
   return
 
+def get_cwd_path(path):
+  if os.path.isabs(path):
+    return path
+  else:
+    return os.path.join(os.getcwd(), path)
+
 if (len(sys.argv) < 3):
   print('Usage: python mkvtomp4.py <input> <audio track number> <output>')
   exit(1)
@@ -57,10 +63,10 @@ if (len(sys.argv) < 3):
 pwd = os.path.dirname(os.path.realpath(__file__))
 print(pwd)
 
-out_path = sys.argv[3]
+out_path = get_cwd_path(sys.argv[3])
 print(out_path)
 
-mkv_path = sys.argv[1]
+mkv_path = get_cwd_path(sys.argv[1])
 print(mkv_path)
 info = get_mediainfo(mkv_path)
 print(info)
