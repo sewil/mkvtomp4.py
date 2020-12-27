@@ -3,6 +3,7 @@ import sys
 import shutil
 import json
 import subprocess
+import argparse
 
 # Functions
 def mkvextract(mkv_path, audio_track_index, video_path, audio_path):
@@ -55,18 +56,23 @@ def get_cwd_path(path):
   else:
     return os.path.join(os.getcwd(), path)
 
-if (len(sys.argv) < 3):
-  print('Usage: python mkvtomp4.py <input> <audio track number> <output>')
-  exit(1)
+# Argparse
+parser = argparse.ArgumentParser(description='Convert an .mkv file to .mp4 losslessly.')
+parser.add_argument('mkv_path', metavar='infile', type=str, help='Input path')
+parser.add_argument('audio_track_index', type=int, default=1, help='Audio track index')
+parser.add_argument('out_path', metavar='outfile', type=str, help='Output path')
+
+args = parser.parse_args()
+print(args)
 
 # Vars
 pwd = os.path.dirname(os.path.realpath(__file__))
 print(pwd)
 
-out_path = get_cwd_path(sys.argv[3])
+out_path = get_cwd_path(args.out_path)
 print(out_path)
 
-mkv_path = get_cwd_path(sys.argv[1])
+mkv_path = get_cwd_path(args.mkv_path)
 print(mkv_path)
 info = get_mediainfo(mkv_path)
 print(info)
@@ -75,7 +81,7 @@ video_track = info['media']['track'][0]
 framerate = video_track['FrameRate']
 print(framerate)
 
-audio_track_index = int(sys.argv[2])
+audio_track_index = args.audio_track_index
 print(audio_track_index)
 
 audio_track = info['media']['track'][audio_track_index + 1]
